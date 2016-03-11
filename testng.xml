@@ -7,8 +7,7 @@
  
   <test name="Test">
     <classes>
-    	<class name="com.quickride.scripts.GroupChatTest"/>
-    	<class name="com.quickride.scripts.NotificationsTest"/>
+    	    	<class name="com.quickride.scripts.NotificationsTest"/>
          <class name="com.quickride.scripts.NewUserRegTest"/>
         <class name="com.quickride.scripts.FeedbackTest"/>
     	<class name="com.quickride.scripts.RechargeEncashTest"/>
