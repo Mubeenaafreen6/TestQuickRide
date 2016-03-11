@@ -422,71 +422,7 @@ public class MyProfilePO {
 				getEleUploadIcn().click();
 				getEleTakePhotoIcn().click();
 
-				switch(sDeviceName)
-				{
-				case "Nexus 5":
-					try
-					{							
-						//Lg nexus 5
-						driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-						getEleCameraBtn().click();
-						getElePressBtn().click();
-						try{
-							getCropicBtn().click();
-							getEleGoogleDoneBtn().click();
-						}catch(Exception e){
-							if(getEleGoogleDoneBtn().isDisplayed()){
-								getEleGoogleDoneBtn().click();
-							}
-						}
-						
-						getEleSaveLnk().click();
-						getEleSaveLnk().click();
-						Assert.assertTrue(getEleArrowIcn().isDisplayed(), "Upload is not successful");
-						qrLog.info("Upload of profile photo is successful");
-						getEleArrowIcn().click();
-						}catch(Exception e)
-					{
-						qrLog.error("Exception at UploadPhoto");
-					
-					}
-							break;
-				case "Che1-L04V100R001C900B121":
-					try
-					{	//Honor 4x
-						driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-						getEleHonorcameraBtn().click();
-						getEleHonorDoneBtn().click();
-						getCropicBtn().click();
-						//getEleGoogleDoneBtn().click();
-						getEleHonorSaveBtn().click();
-						getEleSaveLnk().click();
-						Assert.assertTrue(getEleEditLnk().isDisplayed(), "Upload is not successful");
-						qrLog.info("Upload of profile photo is successful");
-						getEleArrowIcn().click();
-						}catch(Exception e)
-					{
-						qrLog.error("Exception at UploadPhoto");
-						
-					}
-					break;
-				case "Galaxy Grand Prime":
-					try{
-						driver.tap(1, 268, 892, 1);
-						driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-						getEleSamsungOkBtn().click();
-						getCropicBtn().click();
-						getEleGoogleDoneBtn().click();
-						getEleSaveLnk().click();
-					}catch(Exception e)
-					{
-						qrLog.error("Exception at uploadPhoto");
-					}break;
-				default:
-					 qrLog.error("Unable to Identify the device connected, Please connect the device specified above");
-					}
-				
-				}
+			}
 		}catch(Exception e)
 			{
 				qrLog.error("Photo is uploaded");
