@@ -41,7 +41,7 @@ public class UserConfigTest extends QRBaseLib
 	public Logger qrLog = Logger.getLogger(this.getClass());
 	
 	/*@Test id:Usercong_01
-	 * @description:Test User setting the profile details without Vehicle on new Account Activation with Camera 
+	 * @description:Test User setting the profile details without Vehicle on new Account Activation with Camera
 	 * @author: Raghukiran MR
 	 * 
 	 */	
@@ -57,7 +57,7 @@ public class UserConfigTest extends QRBaseLib
 		try
 		{
 				newUserRegPo.signUPorLogin(sData[1],sData[2],sData[3]);
-				myProfilePo.userConfig(sData[4],sData[5],sDeviceName);
+				myProfilePo.userConfig(sData[4],sData[5]);
 				qrLog.info("ProfileDetails is updated successfully");
 		}
 		catch(Exception e){
