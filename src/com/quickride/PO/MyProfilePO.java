@@ -402,7 +402,8 @@ public class MyProfilePO {
 		 * 
 		 */
 	
-	public void userConfig(String designation,String company,String sDeviceName ){
+	public void userConfig(String designation,String company ){
+		int sDeviceName=0;
 		try{
 		
 			if(getEleMenuBar().isDisplayed())
