@@ -212,9 +212,9 @@ public class FeedbackTest extends QRBaseLib {
 			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.getEleNotificationIcon().click();
 			feedbackPo.getEleAcceptLnk().click();
+			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.getEleStartBtn().click();
 			feedbackPo.getEleYesBtn().click();
-			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
 			
 			newUserRegPo.getEleLoginBtn().click();

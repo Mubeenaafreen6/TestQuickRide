@@ -351,7 +351,7 @@ public class NewUserRegPO
 	
 	
 	
-	@FindBy(id="com.disha.quickride:id/guest_textView")
+	@FindBy(name="Guest")
 	private WebElement eleGuestLnk;
 	public WebElement getEleGuestLnk()
 	{

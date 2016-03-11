@@ -170,7 +170,7 @@ public class RideMatchConstraintsTest extends QRBaseLib{
 			try{
 				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);	
 				if(feedbackPo.getEleArrowIcn().isDisplayed()){
-				feedbackPo.getEleArrowIcn().click();
+					feedbackPo.getEleArrowIcn().click();
 					myProfilePo.getEleMenuBar().click();
 				}
 			}catch(Exception e){
