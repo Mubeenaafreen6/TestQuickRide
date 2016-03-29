@@ -62,7 +62,7 @@ public class RideScheduleTest extends QRBaseLib
 			//rider login
 			newUserRegPo.signUPorLogin(sData[1], sData[2], sData[3]);
 			ridesPo.offerRideFrmCurrLoc(sData[5]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.signUPorLogin(sData[6], sData[7], sData[8]);
@@ -108,7 +108,7 @@ public class RideScheduleTest extends QRBaseLib
 			ridesPo.reqstRideFrmCurrentLoc(sData[10]);
 			Thread.sleep(3000);
 			ridesPo.getEleRequestRideBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			qrProfilePo.logout();
 			//rider login
 			newUserRegPo.signUPorLogin(sData[1], sData[2], sData[3]);
@@ -169,7 +169,7 @@ public class RideScheduleTest extends QRBaseLib
 			Thread.sleep(4000);
 			try
 			{
-				ridesPo.getEleBackArrowIcon().click();
+				ridesPo.getEleBackArrowIcn().click();
 				ridesPo.getEleNotificationIcn().click();
 				feedbackPo.getEleRejectLnk().click();
 			}
@@ -186,7 +186,7 @@ public class RideScheduleTest extends QRBaseLib
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -199,7 +199,7 @@ public class RideScheduleTest extends QRBaseLib
 			Thread.sleep(4000);
 			try
 			{
-				ridesPo.getEleBackArrowIcon().click();
+				ridesPo.getEleBackArrowIcn().click();
 				ridesPo.getEleNotificationIcn().click();
 				feedbackPo.getEleRejectLnk().click();
 			}
@@ -216,7 +216,7 @@ public class RideScheduleTest extends QRBaseLib
 			qrProfilePo.logout();
 			//Passenger login and cancel request [Clean up code]
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -259,7 +259,7 @@ public class RideScheduleTest extends QRBaseLib
 			newUserRegPo.login(sData[1], sData[2]);
 			try
 			{
-				ridesPo.getEleBackArrowIcon().click();
+				ridesPo.getEleBackArrowIcn().click();
 				ridesPo.getEleNotificationIcn().click();
 				feedbackPo.getEleRejectLnk().click();
 			}
@@ -276,7 +276,7 @@ public class RideScheduleTest extends QRBaseLib
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			Assert.assertTrue(ridesPo.getEleRequestedTxt().isDisplayed(), "Requested status is not displayed");
 			qrLog.info("Requested status is displayed");
 			ridesPo.getEleRequestedTxt().click();
@@ -306,7 +306,7 @@ public class RideScheduleTest extends QRBaseLib
 			ridesPo.rideNow(sData[4], sData[5]);
 			ridesPo.getEleFindRideTab().click();
 			ridesPo.getEleRequestRideBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.upcomingTab(qrProfilePo);
 			Assert.assertTrue(ridesPo.getEleRequestedTxt().isDisplayed(), "Requested status is not displayed in upcoming for passenger");
 			qrLog.info("Requested status is displayed in upcoming for passenger");
@@ -379,14 +379,69 @@ public class RideScheduleTest extends QRBaseLib
 	}
 	
 	/*
-	 * @Description:Passenger selecting Rider, but Passenger account dont have enough balance
+	 * @Description:Rider selecting passengers, Passenger account dont have sufficient balance
 	 * @author: Raghukiran MR
 	 * @param: sTestCaseID
 	 * @param: sData
 	 */
 	@Test(priority=7, enabled=true)
-	public void testSelectRide(){
+	public void testRiderInvitePassenger(){
 		sTestCaseID="RideSched_07";
+		sData= GenericLib.toReadExcelData(sTestCaseID);
+		newUserRegPo = new NewUserRegPO(driver);
+		qrProfilePo = new QRProfilePO(driver);
+		ridesPo = new RidesPO(driver);	
+		myRewards = new MyRewardsPO(driver);
+		feedbackPo=new FeedbackPO(driver);
+		try{
+			newUserRegPo.signUPorLogin(sData[6], sData[7], sData[8]);
+			qrProfilePo.logout();
+			
+			//UserA create the ride
+			newUserRegPo.signUPorLogin(sData[1], sData[2], sData[3]);
+			feedbackPo.createRide(sData[4],sData[5], ridesPo);
+			
+			feedbackPo.getEleStartBtn().click();
+			feedbackPo.getEleYesBtn().click();
+			feedbackPo.getEleSelectstartedRideLyout().click();
+			feedbackPo.getEleInviteIcn().click();
+			feedbackPo.getEleSearchTxtFld().sendKeys(sData[6]);
+			feedbackPo.getElePassengerLstItm().click();
+			feedbackPo.getEleDoneBtn().click();
+			feedbackPo.getEleArrowIcn().click();
+			qrProfilePo.logout();
+			
+			
+			//UserB accepts the ride 
+			newUserRegPo.getEleLoginBtn().click();
+			newUserRegPo.getEleLoginPhTxtFld().sendKeys(sData[6]);
+			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[7]);
+			driver.hideKeyboard();
+			newUserRegPo.getEleLoginBtn().click();
+			Thread.sleep(10000);
+			feedbackPo.navigateNotification();//no notification to accept is found	
+			feedbackPo.getEleAcceptLnk().click();
+			Assert.assertTrue(myRewards.getEleRechargeBtn().isDisplayed(), "Recharge  page is not displayed");
+			qrLog.info("Recharge  page is displayed");
+			myRewards.getEleRechargeBtn().click();
+			qrProfilePo.logout();
+			}
+		catch(Exception e)
+		{
+			qrLog.error("Exception in  case testSelectRide");
+			e.printStackTrace();
+			Assert.fail();
+		}
+}
+	/*
+	 * @Description:Passenger selecting Rider, but Passenger account dont have enough balance
+	 * @author: Raghukiran MR
+	 * @param: sTestCaseID
+	 * @param: sData
+	 */
+	@Test(priority=8, enabled=true)
+	public void testSelectRide(){
+		sTestCaseID="RideSched_08";
 		sData= GenericLib.toReadExcelData(sTestCaseID);
 		newUserRegPo = new NewUserRegPO(driver);
 		qrProfilePo = new QRProfilePO(driver);
@@ -411,8 +466,8 @@ public class RideScheduleTest extends QRBaseLib
 			feedbackPo.getEleFindRideTab().click();
 			driver.findElement(By.name(sData[3])).click();
 			feedbackPo.getEleJoinBtn().click();
-			Assert.assertTrue(myRewards.getEleRechargeBtn().isDisplayed(), "Recharge button page is not displayed");
-			qrLog.info("Recharge button page is displayed");
+			Assert.assertTrue(myRewards.getEleRechargeBtn().isDisplayed(), "Recharge  page is not displayed");
+			qrLog.info("Recharge  page is displayed");
 			myRewards.getEleRechargeBtn().click();
 			qrProfilePo.logout();
 			}
@@ -429,9 +484,9 @@ public class RideScheduleTest extends QRBaseLib
 	 * @param: sTestCaseID
 	 * @param: sData
 	 */
-	@Test(priority=8, enabled=true)
+	@Test(priority=9, enabled=true)
 	public void testMoreCarCapacitySeats(){
-		sTestCaseID="RideSched_08";
+		sTestCaseID="RideSched_09";
 		sData= GenericLib.toReadExcelData(sTestCaseID);
 		newUserRegPo = new NewUserRegPO(driver);
 		qrProfilePo = new QRProfilePO(driver);
@@ -462,7 +517,7 @@ public class RideScheduleTest extends QRBaseLib
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
@@ -476,7 +531,7 @@ public class RideScheduleTest extends QRBaseLib
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
@@ -505,9 +560,9 @@ public class RideScheduleTest extends QRBaseLib
 	 * @param: sTestCaseID
 	 * @param: sData
 	 */
-	@Test(priority=9, enabled=true)
+	@Test(priority=10, enabled=true)
 	public void testCarCapacityCancelRide(){
-		sTestCaseID="RideSched_09";
+		sTestCaseID="RideSched_10";
 		sData= GenericLib.toReadExcelData(sTestCaseID);
 		newUserRegPo = new NewUserRegPO(driver);
 		qrProfilePo = new QRProfilePO(driver);
@@ -547,7 +602,7 @@ public class RideScheduleTest extends QRBaseLib
 			feedbackPo.joinRide(sData[4],sData[5],sData[3]);
 			qrProfilePo.logout();
 			//UserA accept the ride
-		newUserRegPo.getEleLoginBtn().click();
+			newUserRegPo.getEleLoginBtn().click();
 			newUserRegPo.getEleLoginPhTxtFld().sendKeys(sData[1]);
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();

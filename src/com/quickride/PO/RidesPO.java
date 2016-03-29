@@ -125,13 +125,18 @@ public class RidesPO
 	public WebElement getEleCancelBtn() {
 		return eleCancelBtn;
 	}
+	@FindBy(name="Confirm cancellation")
+	private WebElement eleConfirmCancelTxt;
+	public WebElement getEleConfirmCancelTxt() {
+		return eleConfirmCancelTxt;
+	}
 	@FindBy(id="com.disha.quickride:id/controlButton")
 	private WebElement eleStartBtn;
 	public WebElement getEleStartBtn(){
 		return eleStartBtn;
 	}
 
-	@FindBy(id="com.disha.quickride:id/controlButton")
+	@FindBy(name="Stop")
 	private WebElement eleStopBtn;
 	public WebElement getEleStopBtn(){
 		return eleStopBtn;
@@ -225,7 +230,7 @@ public class RidesPO
 		return eleRideStartedTxt;
 	}
 	
-	@FindBy(id="com.disha.quickride:id/backButton")
+	@FindBy(id="com.disha.quickride:id/back_icon_notification_view_image")
 	private WebElement eleNotiBackArrowIcn;
 	public WebElement getEleNotiBackArrowIcn(){
 		return eleNotiBackArrowIcn;
@@ -240,7 +245,7 @@ public class RidesPO
 	public WebElement getEleRescheduleItm(){
 		return eleRescheduleItm;
 	}
-	@FindBy(id="com.disha.quickride:id/Positive_Action_ID")  
+	@FindBy(name="Accept")  
 	private WebElement eleAcceptLnk;
 	public WebElement getEleAcceptLnk(){
 		return eleAcceptLnk;
@@ -318,9 +323,9 @@ public class RidesPO
 		return eleRequestedTxt;
 	}
 	@FindBy(id="com.disha.quickride:id/back_icon_ride_view_image")
-	private WebElement eleBackArrowIcon;
-	public WebElement getEleBackArrowIcon(){
-		return eleBackArrowIcon;
+	private WebElement eleBackArrowIcn;
+	public WebElement getEleBackArrowIcn(){
+		return eleBackArrowIcn;
 	}
 	@FindBy(name="Cancelled")
 	private WebElement eleCancelledTxt;
@@ -477,19 +482,20 @@ public class RidesPO
 			getEleEntrAddrssTxtField().sendKeys(source);
 			getEleFirstSrcOptn().click();
 			getEleRideNwBtn().click();
-			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			feedbackPo.tohandleblackscreen();
 			try
 			{
-				getEleEntRdEndAddressIcn().click();
-				getEleEntrAddrssTxtField().sendKeys(dest);
-				getEleFirstSrcOptn().click();
+				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+				if(getEleEntRdEndAddressIcn().isDisplayed())
+				{	getEleEntRdEndAddressIcn().click();
+				}
 			}
 			catch(Exception e)
 			{
+			}
 			getEleEntrAddrssTxtField().sendKeys(dest);
 			getEleFirstSrcOptn().click();
-			}
+			driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		}
 	
 	
@@ -503,7 +509,7 @@ public class RidesPO
 			}
 	}
 	
-	
+		
 	public void upcomingTab(QRProfilePO qrProfilePo)
 	{
 		qrProfilePo.getEleMenuLst().click();

@@ -28,12 +28,6 @@ public class QRProfilePO {
 	{
 		return eleMenuLst;
 	}
-	@FindBy(name="Later")
-	private WebElement eleLaterBtn;
-	public WebElement getelELaterBtn()
-	{
-		return eleLaterBtn;
-	}
 
 	@FindBy(name="Profile")
 	private WebElement eleProfileTxt;

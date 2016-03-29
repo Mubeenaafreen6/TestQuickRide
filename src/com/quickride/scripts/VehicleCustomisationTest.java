@@ -86,7 +86,7 @@ public class VehicleCustomisationTest extends QRBaseLib {
 		newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 		newUserRegPo.getEleLoginBtn().click();
 		feedbackPo.getEleArrowIcn().click();
-		feedbackPo.getEleNotificationIcon().click();
+		feedbackPo.getEleNotificationIcn().click();
 		feedbackPo.getEleAcceptLnk().click();
 		feedbackPo.getEleArrowIcn().click();
 		feedbackPo.getEleStartBtn().click();
@@ -188,7 +188,7 @@ public class VehicleCustomisationTest extends QRBaseLib {
 		newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 		newUserRegPo.getEleLoginBtn().click();
 		feedbackPo.getEleArrowIcn().click();
-		feedbackPo.getEleNotificationIcon().click();
+		feedbackPo.getEleNotificationIcn().click();
 		feedbackPo.getEleAcceptLnk().click();
 		feedbackPo.getEleArrowIcn().click();
 		feedbackPo.getEleStartBtn().click();
@@ -219,7 +219,7 @@ public class VehicleCustomisationTest extends QRBaseLib {
 		newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 		newUserRegPo.getEleLoginBtn().click();
 		feedbackPo.getEleArrowIcn().click();
-		feedbackPo.getEleNotificationIcon().click();
+		feedbackPo.getEleNotificationIcn().click();
 		feedbackPo.getEleAcceptLnk().click();
 		feedbackPo.getEleArrowIcn().click();
 		qrprofile.logout();
@@ -328,7 +328,7 @@ public class VehicleCustomisationTest extends QRBaseLib {
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.getEleStartBtn().click();

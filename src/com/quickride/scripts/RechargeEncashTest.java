@@ -381,10 +381,10 @@ public class RechargeEncashTest extends QRBaseLib
 			qrLog.info("Currently balance amount is "+finalRiderBalance);
 			if(sBalance < finalRiderBalance)
 			{
-				System.out.println("1.Final Balance of Rider is" +finalRiderBalance);
+				qrLog.info("1.Final Balance of Rider is" +finalRiderBalance);
 			}else
 			{
-				System.out.println("1.Balance has is not changed" +sBalance);
+				qrLog.info("1.Balance has is not changed" +sBalance);
 			}
 			qrProfilePo.logout();
 			
@@ -399,10 +399,10 @@ public class RechargeEncashTest extends QRBaseLib
 			qrLog.info("Currently balance amount is "+finalPassBalance);
 			if(pBalance > finalPassBalance)
 			{
-				System.out.println("1.Final Balance of Passenger is" +finalPassBalance);
+				qrLog.info("1.Final Balance of Passenger is" +finalPassBalance);
 			}else
 			{
-				System.out.println("1.Balance has is not changed" +pBalance);
+				qrLog.info("1.Balance has is not changed" +pBalance);
 			}
 			
 		}
@@ -460,8 +460,8 @@ public class RechargeEncashTest extends QRBaseLib
 				{
 					driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);	
 				}
-				
-				myProfilePo.getEleFareTxtFld().sendKeys(sData[14]); // Change the ride prizing.
+				myProfilePo.getEleFareTxtFld().clear();
+				myProfilePo.getEleFareTxtFld().sendKeys(sData[15]); // Change the ride prizing.
 				myProfilePo.getEleSaveLnk().click();
 				try
 				{
@@ -516,22 +516,12 @@ public class RechargeEncashTest extends QRBaseLib
 				
 				//Rider login accept the join request and start the ride.
 				newUserRegPo.login(sData[1], sData[2]);
-				try
-				{
-					feedbackPo.getEleAcceptLnk().click();
-					feedbackPo.getEleArrowIcn().click();
-					feedbackPo.getEleStartBtn().click();
-					feedbackPo.getEleYesBtn().click();
-				}
-				catch(Exception e)
-				{
-					feedbackPo.getEleArrowIcn().click();
-					feedbackPo.navigateNotification();	
-					feedbackPo.getEleAcceptLnk().click();
-					feedbackPo.getEleArrowIcn().click();
-					feedbackPo.getEleStartBtn().click();
-					feedbackPo.getEleYesBtn().click();
-				}
+				feedbackPo.getEleArrowIcn().click();
+				feedbackPo.navigateNotification();	
+				feedbackPo.getEleAcceptLnk().click();
+				feedbackPo.getEleArrowIcn().click();
+				feedbackPo.getEleStartBtn().click();
+				feedbackPo.getEleYesBtn().click();
 				qrProfilePo.logout();
 				
 				//Passenger1 login And check in - check out of ride.
@@ -569,10 +559,10 @@ public class RechargeEncashTest extends QRBaseLib
 				qrLog.info("Currently balance amount is "+finalRiderBal);
 				if(sBal < finalRiderBal)
 				{
-					System.out.println("2.Final Balance of Rider is" +finalRiderBal);
+					qrLog.info("2.Final Balance of Rider is" +finalRiderBal);
 				}else
 				{
-					System.out.println("2.Balance is not changed" +sBal);
+					qrLog.info("2.Balance is not changed" +sBal);
 				}
 				qrProfilePo.logout();
 		
@@ -586,11 +576,11 @@ public class RechargeEncashTest extends QRBaseLib
 				qrLog.info("Currently balance amount is "+finalPassBal);
 				if(pBal > finalPassBal)
 				{
-						System.out.println("2.Final Balance of Passenger is" +finalPassBal);
+					qrLog.info("2.Final Balance of Passenger is" +finalPassBal);
 				}	
 				else
 				{
-					System.out.println("2.Balance is not changed" +pBal);
+					qrLog.info("2.Balance is not changed" +pBal);
 				}
 
 			}

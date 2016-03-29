@@ -36,7 +36,7 @@ public class GroupChatTest extends QRBaseLib{
 	 * @author:Raghukiran MR
 	 * 
 	 */
-	@Test(priority=1,enabled=true)
+	@Test(priority=1,enabled=false)
 	public void  testGroupChat(){
 		sTestCaseID="GroupChat_01";
 		sData= GenericLib.toReadExcelData(sTestCaseID);
@@ -73,7 +73,7 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 		
@@ -101,7 +101,7 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 		
 			feedbackPo.getEleArrowIcn().click();
@@ -130,7 +130,7 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			myProfilePo.getEleChatBtn().click();
 			feedbackPo.getEleChatTxtfld().sendKeys(sData[15]);
@@ -181,13 +181,22 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginBtn().click();
 			Assert.assertTrue(myProfilePo.getEleChatBtn().isDisplayed(), "Chat button is not successfully");
 			qrLog.info("Chat button is  successfully");
-			myProfilePo.getEleChatBtn().click();
+			try{
+				myProfilePo.getEleChatBtn().click();
+			}catch(Exception e){
+				feedbackPo.getEleChatArrowIcn().click();
+				feedbackPo.getEleChatArrowIcn().click();
+				myProfilePo.getEleChatBtn().click();
+			}
 			feedbackPo.getEleChatTxtfld().sendKeys(sData[18]);
 			Assert.assertTrue(feedbackPo.getEleChatSendBtn().isDisplayed(), "Chat message sent is not successfully");
 			qrLog.info("Chat message sent successfully");
 			feedbackPo.getEleChatSendBtn().click();
 			feedbackPo.getEleChatArrowIcn().click();
 			driver.navigate().back();
+			myProfilePo.getEleMenuBar().click();
+			qrProfilePo.getEleMyRidesBtn().click();
+			feedbackPo.getEleScheduled().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
 			//Clear up the code
@@ -251,7 +260,7 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
@@ -278,7 +287,7 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
@@ -305,7 +314,7 @@ public class GroupChatTest extends QRBaseLib{
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.getEleScheduled().click();
@@ -355,10 +364,16 @@ public class GroupChatTest extends QRBaseLib{
 			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.getEleScheduled().click();
 			myProfilePo.getEleChatBtn().click();
-			Assert.assertTrue(feedbackPo.getEleChatArrowIcn().isDisplayed(), "All the message is not visible");
-			qrLog.info("All the message is visible");
+			try{
+		
+				Assert.assertTrue(feedbackPo.getEleChatArrowIcn().isDisplayed(), "All the message is not visible");
+				qrLog.info("All the message is visible");
 			feedbackPo.getEleChatArrowIcn().click();
-			driver.navigate().back();
+			}catch(Exception e){
+				feedbackPo.getEleChatArrowIcn().click();
+				feedbackPo.getEleChatArrowIcn().click();
+			}
+			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
 			//Clean up the code
 			newUserRegPo.getEleLoginBtn().click();

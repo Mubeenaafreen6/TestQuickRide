@@ -10,8 +10,11 @@ package com.quickride.scripts;
 
 
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -157,10 +160,11 @@ public class FeedbackTest extends QRBaseLib {
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
+			
 			newUserRegPo.signUPorLogin(sData[9], sData[10],sData[11]);
 			feedbackPo.getEleSearchBtn().click();
 			feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[4]);
@@ -183,7 +187,7 @@ public class FeedbackTest extends QRBaseLib {
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
@@ -210,7 +214,7 @@ public class FeedbackTest extends QRBaseLib {
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			feedbackPo.getEleNotificationIcon().click();
+			feedbackPo.getEleNotificationIcn().click();
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.getEleStartBtn().click();
@@ -261,15 +265,32 @@ public class FeedbackTest extends QRBaseLib {
 			feedbackPo.getEleStopBtn().click();
 			feedbackPo.getEleYesBtn().click();
 			feedbackPo.getEleRideNextBtn().click();
+			Thread.sleep(1000);
+			List<WebElement>  feedback =driver.findElements(By.xpath("//android.widget.ImageView"));
+			feedback.get(0).click();
 			feedbackPo.getEleCommmentTxtFld().sendKeys(sData[15]);
 			int x=driver.findElementById("com.disha.quickride:id/userRatingBar").getLocation().getX();
 		    int y=driver.findElementById("com.disha.quickride:id/userRatingBar").getLocation().getY();
 		    Thread.sleep(2000);
-		    driver.tap(1, x+200, y+70, 100);
+		   driver.tap(1, x+200, y+70, 100);
+		   Thread.sleep(2000);
+		   feedback.get(1).click();
+			feedbackPo.getEleCommmentTxtFld().sendKeys(sData[15]);
+			int x1=driver.findElementById("com.disha.quickride:id/userRatingBar").getLocation().getX();
+		    int y1=driver.findElementById("com.disha.quickride:id/userRatingBar").getLocation().getY();
 		    Thread.sleep(2000);
-		    feedbackPo.getEleSubmitBtn().click();
-		    qrLog.info("Passenger gives rating successfully");
-		    qrProfilePo.logout();
+		   driver.tap(1, x1+200, y1+70, 100);
+		   Thread.sleep(1000);
+		   feedback.get(2).click();
+			feedbackPo.getEleCommmentTxtFld().sendKeys(sData[15]);
+			int x2=driver.findElementById("com.disha.quickride:id/userRatingBar").getLocation().getX();
+		    int y2=driver.findElementById("com.disha.quickride:id/userRatingBar").getLocation().getY();
+		    Thread.sleep(2000);
+		   driver.tap(1, x2+200, y2+70, 100);
+		   feedbackPo.getEleSubmitBtn().click();
+		   qrLog.info("Passenger gives rating successfully");
+		  Thread.sleep(1000);
+		   qrProfilePo.logout();
 		 }catch(Exception e){
 			qrLog.error("Exception in  case testRatingFeedback");
 			

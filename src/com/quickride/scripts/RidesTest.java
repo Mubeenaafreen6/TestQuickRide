@@ -104,7 +104,7 @@ public class RidesTest extends QRBaseLib
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.upcomingTab(qrProfilePo);
 			Assert.assertTrue(ridesPo.getEleScheduledTxt().isDisplayed(), "Scheduled status is not displayed in upcoming for passenger");
 			qrLog.info("Scheduled status is displayed in upcoming tab for passenger");
@@ -114,7 +114,7 @@ public class RidesTest extends QRBaseLib
 			qrProfilePo.logout();
 			//rider login
 			newUserRegPo.login(sData[1], sData[2]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStopTxtBtn().click();
 			ridesPo.getEleYesBtn().click();
 			qrProfilePo.logout();
@@ -145,14 +145,14 @@ public class RidesTest extends QRBaseLib
 			ridesPo.rideNow(sData[4], sData[5]);
 			ridesPo.getEleOfferRideTab().click();
 			ridesPo.getEleOfferRideBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStartRideBtn().click();
 			ridesPo.getEleYesBtn().click();
 			ridesPo.upcomingTab(qrProfilePo);
 			Assert.assertTrue(ridesPo.getEleStartedTxt().isDisplayed(), "Started status is not displayed in upcoming for rider");
 			qrLog.info("Started status is displayed in upcoming for rider");
 			ridesPo.getEleStartedTxt().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStopTxtBtn().click();
 			ridesPo.getEleYesBtn().click();
 			qrProfilePo.logout();
@@ -197,13 +197,13 @@ public class RidesTest extends QRBaseLib
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			feedbackPo.checkInRide();
 			ridesPo.upcomingTab(qrProfilePo);
 			Assert.assertTrue(ridesPo.getEleStartedTxt().isDisplayed(), "Started status is not displayed in upcoming tab for passenger");
 			qrLog.info("Started status is displayed in upcoming tab for passenger");
 			ridesPo.getEleStartedTxt().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			feedbackPo.checkOutRide();
 			ridesPo.getEleNextBtn().click();
 			ridesPo.getEleSubmitBtn().click();
@@ -211,7 +211,7 @@ public class RidesTest extends QRBaseLib
 			
 			//Ride Cancellation code - rider login to stop ride. [Clean up code]
 			newUserRegPo.login(sData[1], sData[2]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStopTxtBtn().click();
 			ridesPo.getEleYesBtn().click();
 			ridesPo.getEleNextBtn().click();
@@ -243,12 +243,12 @@ public class RidesTest extends QRBaseLib
 			ridesPo.rideNow(sData[4], sData[5]);
 			ridesPo.getEleFindRideTab().click();
 			ridesPo.getEleRequestRideBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.upcomingTab(qrProfilePo);
 			Assert.assertTrue(ridesPo.getEleRequestedTxt().isDisplayed(), "Requested status is not displayed in upcoming for passenger");
 			qrLog.info("Requested status is displayed in upcoming for passenger");
 			ridesPo.getEleRequestedTxt().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -287,7 +287,7 @@ public class RidesTest extends QRBaseLib
 			Assert.assertTrue(ridesPo.getEleRequestedTxt().isDisplayed(), "Requested status is not displayed in upcoming for passenger");
 			qrLog.info("Requested status is displayed in upcoming for passenger");
 			ridesPo.getEleRequestedTxt().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -297,7 +297,7 @@ public class RidesTest extends QRBaseLib
 			Thread.sleep(10000);
 			try{
 					ridesPo.getEleNotiBackArrowIcn().click();
-					ridesPo.getEleBackArrowIcon().click();
+					ridesPo.getEleBackArrowIcn().click();
 					ridesPo.getEleCancelinNotilnk().click();
 					ridesPo.getEleCancelBtn().click();
 					ridesPo.getEleYesBtn().click();
@@ -306,7 +306,7 @@ public class RidesTest extends QRBaseLib
 				catch(Exception e)
 				{
 
-					ridesPo.getEleBackArrowIcon().click();
+					ridesPo.getEleBackArrowIcn().click();
 					ridesPo.getEleCancelinNotilnk().click();
 					ridesPo.getEleCancelBtn().click();
 					ridesPo.getEleYesBtn().click();
@@ -348,7 +348,7 @@ public class RidesTest extends QRBaseLib
 			{
 				ridesPo.getEleCreateRideBtn().click();
 			}
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStartRideBtn().click();
 			ridesPo.getEleYesBtn().click();
 			ridesPo.getEleStopTxtBtn().click();
@@ -400,14 +400,12 @@ public class RidesTest extends QRBaseLib
 			catch(Exception e)
 			{
 				feedbackPo.getEleAcceptLnk().click();
-				feedbackPo.getEleArrowIcn().click();
-				feedbackPo.getEleStartBtn().click();
-				feedbackPo.getEleYesBtn().click();
+				
 			}
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			feedbackPo.checkInRide();
 			feedbackPo.checkOutRide();
 			ridesPo.getEleNextBtn().click();
@@ -418,7 +416,7 @@ public class RidesTest extends QRBaseLib
 			qrProfilePo.logout();
 			//rider login
 			newUserRegPo.login(sData[1], sData[2]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStopTxtBtn().click();
 			ridesPo.getEleYesBtn().click();
 			ridesPo.getEleNextBtn().click();
@@ -461,7 +459,7 @@ public class RidesTest extends QRBaseLib
 			{
 				ridesPo.getEleCreateRideBtn().click();
 			}
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -500,16 +498,13 @@ public class RidesTest extends QRBaseLib
 			newUserRegPo.signUPorLogin(sData[6], sData[7], sData[8]);
 			ridesPo.rideNow(sData[9], sData[10]);
 			ridesPo.getEleFindRideTab().click();
-			while(true)
-			{
-				if(driver.findElement(By.name(sData[3])).isDisplayed())
+			if(driver.findElement(By.name(sData[3])).isDisplayed())
 				{
+					qrLog.info("Rider is displayed");
 					driver.findElement(By.name(sData[3])).click();
-					break;
 				}
-			}
 			ridesPo.getEleJoinBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -522,7 +517,7 @@ public class RidesTest extends QRBaseLib
 			Thread.sleep(10000);
 			try
 			{
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -530,7 +525,7 @@ public class RidesTest extends QRBaseLib
 			catch(Exception e)
 			{
 				ridesPo.getEleNotiBackArrowIcn().click();
-				ridesPo.getEleBackArrowIcon().click();
+				ridesPo.getEleBackArrowIcn().click();
 				ridesPo.getEleCancelinNotilnk().click();
 				ridesPo.getEleCancelBtn().click();
 				ridesPo.getEleYesBtn().click();
@@ -569,16 +564,13 @@ public class RidesTest extends QRBaseLib
 			newUserRegPo.signUPorLogin(sData[6], sData[7], sData[8]);
 			ridesPo.rideNow(sData[9], sData[10]);
 			ridesPo.getEleFindRideTab().click();
-			while(true)
-			{
-				if(driver.findElement(By.name(sRiderName)).isDisplayed())
+			if(driver.findElement(By.name(sRiderName)).isDisplayed())
 				{
+					qrLog.info("Rider is displayed");
 					driver.findElement(By.name(sRiderName)).click();
-					break;
 				}
-			}
 			ridesPo.getEleJoinBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -588,13 +580,13 @@ public class RidesTest extends QRBaseLib
 			newUserRegPo.login(sData[1], sData[2]);
 			Thread.sleep(10000);
 			try{
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleNotificationIcn().click();
 			}
 			catch(Exception e)
 			{
 				ridesPo.getEleNotiBackArrowIcn().click();
-				ridesPo.getEleBackArrowIcon().click();
+				ridesPo.getEleBackArrowIcn().click();
 				ridesPo.getEleNotificationIcn().click();
 			}
 			while(true)
@@ -615,7 +607,7 @@ public class RidesTest extends QRBaseLib
 			qrProfilePo.logout();
 			//rider login [Clean-up code]
 			newUserRegPo.login(sData[1], sData[2]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();
@@ -662,18 +654,18 @@ public class RidesTest extends QRBaseLib
 				}
 			}
 			ridesPo.getEleJoinBtn().click();
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			qrProfilePo.logout();
 			//rider login
 			newUserRegPo.login(sData[1], sData[2]);
 			try{
-				ridesPo.getEleBackArrowIcon().click();
+				ridesPo.getEleBackArrowIcn().click();
 				ridesPo.getEleNotificationIcn().click();
 				}
 				catch(Exception e)
 				{
 					ridesPo.getEleNotiBackArrowIcn().click();
-					ridesPo.getEleBackArrowIcon().click();
+					ridesPo.getEleBackArrowIcn().click();
 					ridesPo.getEleNotificationIcn().click();
 				}
 			while(true)
@@ -684,13 +676,13 @@ public class RidesTest extends QRBaseLib
 					break;
 				}
 			}
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleStartRideBtn().click();
 			ridesPo.getEleYesBtn().click();
 			qrProfilePo.logout();
 			//passenger login
 			newUserRegPo.login(sData[6], sData[7]);
-			ridesPo.getEleBackArrowIcon().click();
+			ridesPo.getEleBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();
 			ridesPo.getEleYesBtn().click();

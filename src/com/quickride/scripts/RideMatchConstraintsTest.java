@@ -79,11 +79,46 @@ public class RideMatchConstraintsTest extends QRBaseLib{
 		feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[5]);
 		feedbackPo.getEleFirstOption().click();
 		feedbackPo.getEleFindRideTab().click();
-		Assert.assertTrue(feedbackPo.getElepassArrowIcn().isDisplayed(), "Address link is not displayed");
-		qrLog.info("Address link is displayed");
+		Assert.assertTrue(feedbackPo.getElepassArrowIcn().isDisplayed(), "Ride is not displayed");
+		qrLog.info("Ride is displayed");
+		feedbackPo.getElepassArrowIcn().click();
+		myProfilePo.getEleNoBtn().click();
+		qrprofile.logout();
+		//gender constraint removed
+		newUserRegPo.signupMale(sData[10],sData[11],sData[12]);
+		myProfilePo.getEleMenuBar().click();
+		Assert.assertTrue(myProfilePo.getEleSettingsBtn().isDisplayed(), "Profile page is not displayed");
+		qrLog.info("Profile page is displayed");
+		myProfilePo.getEleSettingsBtn().click();
+		Assert.assertTrue(myProfilePo.getEleSameGender().isDisplayed(), "Tap on SameGender checkbox is  successfully");
+		qrLog.info("Tap on SameGender checkbox  is successfull");
+		myProfilePo.getEleSameGender().click();
+		myProfilePo.getEleSaveLnk().click();
+		feedbackPo.getEleSearchBtn().click();
+		feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[4]);
+		feedbackPo.getEleFirstOption().click();
+		feedbackPo.getEleRideNwBtn().click();
+		feedbackPo.tohandleblackscreen();
+		feedbackPo.getEleEndAddressTxtFld().click();
+		feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[5]);
+		feedbackPo.getEleFirstOption().click();
+		feedbackPo.getEleFindRideTab().click();
+		Assert.assertTrue(feedbackPo.getElepassArrowIcn().isDisplayed(), "Ride is displayed");
+		qrLog.info("ride is not displayed");
 		feedbackPo.getElepassArrowIcn().click();
 		myProfilePo.getEleNoBtn().click();
 		////Clean up code
+		myProfilePo.getEleMenuBar().click();
+		myProfilePo.getEleSettingsBtn().click();
+		myProfilePo.getEleSameGender().click();
+		myProfilePo.getEleSaveLnk().click();
+		qrprofile.logout();
+		//Clean Up code
+		newUserRegPo.getEleLoginBtn().click();
+		newUserRegPo.getEleLoginPhTxtFld().sendKeys(sData[6]);
+		newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[7]);
+		driver.hideKeyboard();
+		newUserRegPo.getEleLoginBtn().click();
 		myProfilePo.getEleMenuBar().click();
 		myProfilePo.getEleSettingsBtn().click();
 		myProfilePo.getEleSameGender().click();
@@ -134,13 +169,13 @@ public class RideMatchConstraintsTest extends QRBaseLib{
 			myProfilePo.getEleEditLnk().click();
 			myProfilePo.getEleCompanyIcn().click();
 			myProfilePo.getEleRemoveCompanyTxt().click();
-			myProfilePo.getEleCompanyTxtFld().sendKeys("CBIT");
+			myProfilePo.getEleCompanyTxtFld().sendKeys(sData[9]);
 			driver.navigate().back();
 			myProfilePo.getEleSaveLnk().click();
 			try{
 				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);	
-				if(feedbackPo.getEleArrowIcn().isDisplayed()){
-				feedbackPo.getEleArrowIcn().click();
+				if(feedbackPo.getEleProfileArrowIcn().isDisplayed()){
+				feedbackPo.getEleProfileArrowIcn().click();
 				myProfilePo.getEleMenuBar().click();
 				}
 			}catch(Exception e){
@@ -164,13 +199,13 @@ public class RideMatchConstraintsTest extends QRBaseLib{
 			myProfilePo.getEleEditLnk().click();
 			myProfilePo.getEleCompanyIcn().click();
 			myProfilePo.getEleRemoveCompanyTxt().click();
-			myProfilePo.getEleCompanyTxtFld().sendKeys("CBIT");
+			myProfilePo.getEleCompanyTxtFld().sendKeys(sData[9]);
 			driver.navigate().back();
 			myProfilePo.getEleSaveLnk().click();
 			try{
 				driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);	
-				if(feedbackPo.getEleArrowIcn().isDisplayed()){
-					feedbackPo.getEleArrowIcn().click();
+				if(feedbackPo.getEleProfileArrowIcn().isDisplayed()){
+				feedbackPo.getEleProfileArrowIcn().click();
 					myProfilePo.getEleMenuBar().click();
 				}
 			}catch(Exception e){
@@ -194,17 +229,37 @@ public class RideMatchConstraintsTest extends QRBaseLib{
 			feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[5]);
 			feedbackPo.getEleFirstOption().click();
 			feedbackPo.getEleFindRideTab().click();
-			Assert.assertTrue(feedbackPo.getElepassArrowIcn().isDisplayed(), "Address link is not displayed");
-			qrLog.info("Address link is displayed");
+			Assert.assertTrue(feedbackPo.getElepassArrowIcn().isDisplayed(), "Rider name is not displayed");
+			qrLog.info("Rider name is displayed");
 			feedbackPo.getElepassArrowIcn().click();
 			myProfilePo.getEleNoBtn().click();
+			myProfilePo.getEleMenuBar().click();
+			myProfilePo.getEleArrowBtn().click();
+			myProfilePo.getEleEditLnk().click();
+			myProfilePo.getEleCompanyIcn().click();
+			myProfilePo.getEleRemoveCompanyTxt().click();
+			myProfilePo.getEleCompanyTxtFld().sendKeys(sData[10]);
+			driver.navigate().back();
+			myProfilePo.getEleSaveLnk().click();
+			feedbackPo.getEleProfileArrowIcn().click();
+			feedbackPo.getEleSearchBtn().click();
+			feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[4]);
+			feedbackPo.getEleFirstOption().click();
+			feedbackPo.getEleRideNwBtn().click();
+			feedbackPo.tohandleblackscreen();
+			feedbackPo.getEleEndAddressTxtFld().click();
+			feedbackPo.getEleEnterAddTxtFld().sendKeys(sData[5]);
+			feedbackPo.getEleFirstOption().click();
+			Assert.assertTrue(feedbackPo.getEleFindRideTab().isDisplayed(), "Rider name is displayed");
+			qrLog.info("Rider name is not displayed");
 			////Clean up code
+			feedbackPo.getElepassArrowIcn().click();
+			myProfilePo.getEleNoBtn().click();
 			myProfilePo.getEleMenuBar().click();
 			myProfilePo.getEleSettingsBtn().click();
 			myProfilePo.getEleSameCompany().click();
 			myProfilePo.getEleSaveLnk().click();
 			qrprofile.logout();
-			
 			//Clean up code
 			newUserRegPo.getEleLoginBtn().click();
 			newUserRegPo.getEleLoginPhTxtFld().sendKeys(sData[1]);
@@ -216,6 +271,7 @@ public class RideMatchConstraintsTest extends QRBaseLib{
 			myProfilePo.getEleSettingsBtn().click();
 			myProfilePo.getEleSameCompany().click();
 			myProfilePo.getEleSaveLnk().click();
+			myProfilePo.getEleMenuBar().click();
 			qrprofile.getEleMyRidesBtn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			ridesPo.getEleCancelBtn().click();

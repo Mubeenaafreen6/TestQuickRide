@@ -159,6 +159,7 @@ public class NewUserRegTest extends QRBaseLib
 		newUserRegPo = new NewUserRegPO(driver);
 		try
 		{
+			
 			if(newUserRegPo.getEleSignUpLaunchBtn().isDisplayed())
 			{
 				qrLog.info("SignUp button is displayed");
@@ -202,7 +203,6 @@ public class NewUserRegTest extends QRBaseLib
 			newUserRegPo.login(sData[1], sData[2]);
 			Assert.assertTrue(newUserRegPo.getEleCurrentLocTxt().isDisplayed(), "Login is not Successful");
 			qrLog.info("Login is completed");
-		
 			qrProfilePo.logout();
 			newUserRegPo.login(sData[1], sData[2]);
 			Assert.assertTrue(newUserRegPo.getEleCurrentLocTxt().isDisplayed(), "Login is not Successful");

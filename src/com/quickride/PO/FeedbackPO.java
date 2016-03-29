@@ -6,8 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-
-
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -55,7 +54,28 @@ public class FeedbackPO {
 	{
 		return  eleFirstOption ;
 	}
+	
+	@FindBy(id="com.disha.quickride:id/addPassengers")
+	private WebElement eleInviteIcn;
+	public WebElement getEleInviteIcn()
+	{
+		return  eleInviteIcn ;
+	}
 
+	
+	@FindBy(id = "com.disha.quickride:id/contact_user_name")
+	private WebElement elePassengerLstItm;
+	public WebElement getElePassengerLstItm()
+	{
+		return elePassengerLstItm;
+	}
+	@FindBy(name="Search by Name")
+	private WebElement eleSearchTxtFld;
+	public WebElement getEleSearchTxtFld()
+	{
+		return  eleSearchTxtFld ;
+	}
+	
 	@FindBy(id = "com.disha.quickride:id/findNow")
 	private WebElement eleRideNwBtn;
 	public WebElement getEleRideNwBtn()
@@ -94,12 +114,24 @@ public class FeedbackPO {
 	public WebElement getEleStartBtn() {
 		return eleStartBtn;
 	}
-
+	@FindBy(id="com.disha.quickride:id/drawer_unread_notifications")
+	private WebElement eleNotificationCntTxt;
+	public WebElement getEleNotificationCntTxt() {
+		return eleNotificationCntTxt;
+	}
+	
 	@FindBy(name="Yes")
 	private WebElement eleYesBtn;
 	public WebElement getEleYesBtn() 
 	{
 		return eleYesBtn;
+	}
+
+	@FindBy(id="com.disha.quickride:id/fromToInfo")
+	private WebElement eleSelectstartedRideLyout;
+	public WebElement getEleSelectstartedRideLyout() 
+	{
+		return eleSelectstartedRideLyout;
 	}
 
 	@FindBy(name="Stop")
@@ -190,7 +222,13 @@ public class FeedbackPO {
 	{
 		return eleArrowIcn;
 	}
-
+	
+	@FindBy(id="com.disha.quickride:id/profile_actionbar_backPress_image")
+	private WebElement  eleProfileArrowIcn;
+	public WebElement getEleProfileArrowIcn()
+	{
+		return eleProfileArrowIcn;
+	}
 	@FindBy(name="New Ride")
 	private WebElement  elepassArrowIcn;
 	public WebElement getElepassArrowIcn()
@@ -198,12 +236,7 @@ public class FeedbackPO {
 		return elepassArrowIcn;
 	}
 
-	@FindBy(id="com.disha.quickride:id/profile_actionbar_backPress_image")		
-	private static WebElement eleProfileArrowIcn;
-	public WebElement getEleProfileArrowIcn()
-	{
-		return eleProfileArrowIcn;
-	}
+	
 	
 	@FindBy(name="Accept")
 	private WebElement  eleAcceptLnk;
@@ -213,10 +246,10 @@ public class FeedbackPO {
 	}
 	
 	@FindBy(id="com.disha.quickride:id/drawer_notification_icon")
-	private WebElement  eleNotificationIcon;
-	public WebElement getEleNotificationIcon()
+	private WebElement  eleNotificationIcn;
+	public WebElement getEleNotificationIcn()
 	{
-		return eleNotificationIcon;
+		return eleNotificationIcn;
 	}
 	
 	@FindBy(id="com.disha.quickride:id/description")
@@ -232,7 +265,19 @@ public class FeedbackPO {
 	{
 		return eleQRWalletNotiTxt;
 	}
+	@FindBy(id="com.disha.quickride:id/description")
+	private WebElement  eleQRWalletDebitedTxt;
+	public WebElement getEleQRWalletDebitedTxt()
+	{
+		return eleQRWalletDebitedTxt;
+	}
 	
+	@FindBy(xpath="(//android.widget.TextView[@name='QuickRide Wallet']/../android.widget.TextView[@id='com.disha.quickride:id/description']")
+	private WebElement  eleQRWalletCreditedTxt;
+	public WebElement getEleQRWalletCreditedTxt()
+	{
+		return eleQRWalletCreditedTxt;
+	}
 	@FindBy(id="com.disha.quickride:id/notification_time")
 	private WebElement  eleNotiTimeTxt;
 	public WebElement getEleNotiTimeTxt()
@@ -493,9 +538,9 @@ public void navigateNotification()
 {
 	try
 	{
-		if(eleNotificationIcon.isDisplayed())
+		if(eleNotificationIcn.isDisplayed())
 		{
-			eleNotificationIcon.click();
+			eleNotificationIcn.click();
 			
 		}
 		

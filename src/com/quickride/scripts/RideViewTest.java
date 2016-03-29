@@ -378,8 +378,8 @@ public class RideViewTest extends QRBaseLib {
 		
 		
 		feedbackPo.getEleJoinBtn().click();
-		feedbackPo.getEleArrowIcn().click();
 		Assert.assertTrue(feedbackPo.getEleArrowIcn().isDisplayed(), "Join Ride is not successfull");
+		feedbackPo.getEleArrowIcn().click();
 		qrLog.info("Join Ride is  successfull");
 		
 		
@@ -547,7 +547,7 @@ public class RideViewTest extends QRBaseLib {
 		Assert.assertTrue(myProfilePo.getEleChatBtn().isDisplayed(), "Chat Icon is not displayed");
 		qrLog.info("Chat Icon is displayed");
 		feedbackPo.getEleArrowIcn().click();
-		feedbackPo.getEleNotificationIcon().click();
+		feedbackPo.getEleNotificationIcn().click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		feedbackPo.getEleAcceptLnk().click();
 		feedbackPo.getEleArrowIcn().click();
@@ -631,7 +631,7 @@ public class RideViewTest extends QRBaseLib {
 		newUserRegPo.getEleLoginBtn().click();
 		Thread.sleep(20000);
 		feedbackPo.getEleArrowIcn().click();
-		feedbackPo.getEleNotificationIcon().click();
+		feedbackPo.getEleNotificationIcn().click();
 		feedbackPo.getEleAcceptLnk().click();
 		Assert.assertTrue(feedbackPo.getEleParticipantIcn().isDisplayed(), "Participants accurately is not displayed");
 		qrLog.info("Participants accurately displayed");
@@ -692,7 +692,7 @@ public class RideViewTest extends QRBaseLib {
 		
 	
 		feedbackPo.getEleArrowIcn().click();
-		feedbackPo.getEleNotificationIcon().click();
+		feedbackPo.getEleNotificationIcn().click();
 		feedbackPo.getEleAcceptLnk().click();
 		
 		feedbackPo.getEleArrowIcn().click();

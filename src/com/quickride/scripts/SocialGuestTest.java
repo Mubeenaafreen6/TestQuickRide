@@ -44,7 +44,8 @@ public class SocialGuestTest extends QRBaseLib
 		newUserRegPo = new NewUserRegPO(driver);
 		qrProfilePo = new QRProfilePO(driver);
 		try
-		{ if(newUserRegPo.getEleGuestLnk().isDisplayed())
+		{ 
+			if(newUserRegPo.getEleGuestLnk().isDisplayed())
 			{
 				newUserRegPo.getEleGuestLnk().click();
 				while(true)

@@ -552,9 +552,7 @@ public class MyProfilePO {
 			getEleVehicleNoTxtFld().sendKeys(Vehiclenum);
 			getEleVehModelOption().click();
 			getEleSedanItm().click();
-			getEleFareTxtFld().clear();
 			getEleFareTxtFld().sendKeys(Fare);
-			getEleOfferdSeatsTxtFld().clear();
 			getEleSeatsTxtFld().sendKeys(Offeredseats);
 			getEleSaveLnk().click();
 			
@@ -569,6 +567,9 @@ public class MyProfilePO {
 		
 		
 	}
+
+
+	
 	public void customSeats(String sFare,String sOffersseats){
 		
 		

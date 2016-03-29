@@ -128,7 +128,7 @@ public class UserConfigTest extends QRBaseLib
 		try
 		{
 			newUserRegPo.signUPorLogin(sData[1], sData[2],sData[3]);
-			myProfilePo.vehicleDetails(sData[4],sData[5],sData[9]);
+			myProfilePo.vehicleDetails(sData[4],sData[5],sData[6]);
 			qrLog.info("VehicleDetails is update successfully");
 		}
 		catch(Exception e){

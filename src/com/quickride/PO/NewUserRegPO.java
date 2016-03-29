@@ -92,7 +92,7 @@ public class NewUserRegPO
 	{
 		return eleFemaleRdBtn;
 	}
-	@FindBy(id = "com.disha.quickride:id/gender_male_radio_btn")
+	@FindBy(name= "Male")
 	private static WebElement  eleMaleRdBtn;
 	public WebElement getEleMaleRdBtn()
 	{
@@ -388,7 +388,7 @@ public class NewUserRegPO
 				getElePwdTxtFld().sendKeys(sPwd);
 				getEleNameTxtFld().sendKeys(sName);
 				driver.hideKeyboard();
-				getEleFemaleRdBtn().click();
+				getEleMaleRdBtn().click();
 				getEleSignUpRegBtn().click();
 				Assert.assertTrue(getEleThankYouTxt().isDisplayed(), "SignUp is incomplete");
 				qrLog.info("Sign Up is completed");
@@ -490,14 +490,70 @@ public class NewUserRegPO
 			qrLog.info("Login is completed");
 			
 		}
-		
-		
-		
-		
-	
-	
 	}
+	public void signupMale(String sPhoneNum, String sPwd, String sName){
+
+		String sVerificationCode=null;
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		if(getEleLoginBtn().isDisplayed())
+		{
+			qrLog.info("Login button is displayed");
+			getEleLoginBtn().click();
+			getEleLoginPhTxtFld().sendKeys(sPhoneNum);
+			getEleLoginPwdTxtFld().sendKeys(sPwd);
+			driver.hideKeyboard();
+			getEleLoginBtn().click();
+		}
+		try
+	
+		{
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			if(getEleOKBtn().isDisplayed())
+			{
+				qrLog.info("User is not registered, need to Sign Up first");
+			}
+			
+			getEleOKBtn().click();
+			getEleNameTxtFld().sendKeys(sName);
+			driver.hideKeyboard();
+			getEleMaleRdBtn().click();
+			getEleSignUpRegBtn().click();
+			
+			Assert.assertTrue(getEleThankYouTxt().isDisplayed(), "SignUp is incomplete");
+			qrLog.info("Sign Up is completed");
+			
+
+			while(true)
+			{
+				sVerificationCode=GenericLib.getDBdata(GenericLib.getCongigValue(QRBaseLib.sConfigFile, "VERIFICATION"), "verifycode", "subject", sPhoneNum);
+				System.out.println(sVerificationCode);
+				if(!(sVerificationCode.isEmpty()))
+				{
+					break;
+				}
+			
+			}
+			getEleActivationTxtFld().sendKeys(sVerificationCode);			
+			getEleActivateBtn().click();
+			Assert.assertTrue(getEleAccActivatedTxt().isDisplayed(), "Account activated popup is not displayed");
+			qrLog.info("Account Activated popup is successfully displayed");
+			getEleSkipBtn().click();
+			Assert.assertTrue(getEleCurrentLocTxt().isDisplayed(), "New Ride page is not displayed");
+			qrLog.info("New Ride page is succesfully displayed");
+			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			
+		}
+		catch(Exception e)
+		{
+			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			Assert.assertTrue(getEleCurrentLocTxt().isDisplayed(), "Login is not Successful");
+			qrLog.info("Login is completed");
+			
+		}
+	}
+	}
+
 	
 
 	
-}

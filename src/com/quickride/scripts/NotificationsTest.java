@@ -180,7 +180,7 @@ public class NotificationsTest extends QRBaseLib
 			qrLog.info("Rider creating the ride");
 			feedbackPo.createRide(sData[4], sData[5],ridesPo);
 			qrProfilePo.logout();
-			
+		
 			qrLog.info("Passenger joining the ride");
 			newUserRegPo.signUPorLogin(sData[6], sData[7],sData[8]);
 			feedbackPo.joinRide(sData[4],sData[5],sData[3]);
@@ -203,6 +203,10 @@ public class NotificationsTest extends QRBaseLib
 			feedbackPo.navigateNotification();	
 			Assert.assertTrue(feedbackPo.getEleQRWalletNotiTxt().isDisplayed(), "Quick Ride Wallet notification to Passenger is not displayed");
 			qrLog.info("Quick Ride Wallet notification to Passenger is displayed");
+			
+			Assert.assertTrue(feedbackPo.getEleQRWalletDebitedTxt().isDisplayed(), "Quick Ride Wallet notification to Passenger is not displayed");
+			qrLog.info(feedbackPo.getEleQRWalletDebitedTxt().getText()+"is the payment");
+		
 			ridesPo.getEleNotiBackArrowIcn().click();
 			qrProfilePo.logout();
 		
@@ -214,9 +218,10 @@ public class NotificationsTest extends QRBaseLib
 			newUserRegPo.getEleLoginBtn().click();
 			Assert.assertTrue(ridesPo.getEleRideClosedTxt().isDisplayed(), "Ride closed message to Passenger is not displayed");
 			qrLog.info("Ride closed message to Passenger is displayed");
-			
 			ridesPo.getEleOkBtn().click();
 			qrProfilePo.logout();
+			
+			
 		} catch (Exception e) {
 			qrLog.error("Exception in  case testRiderStartedCancelled");
 			e.printStackTrace();
@@ -240,6 +245,7 @@ public class NotificationsTest extends QRBaseLib
 		ridesPo = new RidesPO(driver);
 		try
 		{
+		
 			newUserRegPo.signUPorLogin(sData[1], sData[2],sData[3]);
 			qrLog.info("Rider creating the ride");
 			feedbackPo.createRide(sData[4], sData[5],ridesPo);
@@ -256,7 +262,10 @@ public class NotificationsTest extends QRBaseLib
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			driver.hideKeyboard();
 			newUserRegPo.getEleLoginBtn().click();
-			feedbackPo.acceptRide();
+			feedbackPo.getEleArrowIcn().click();
+			feedbackPo.navigateNotification();	
+			feedbackPo.getEleAcceptLnk().click();
+			feedbackPo.getEleArrowIcn().click();
 			qrProfilePo.logout();
 			
 			qrLog.info("Passenger logins to recieve Ride cancelled notification");
@@ -267,12 +276,32 @@ public class NotificationsTest extends QRBaseLib
 			newUserRegPo.getEleLoginBtn().click();
 			ridesPo.getEleRideSettingsLst().click();
 			ridesPo.getEleCancelBtn().click();
+			
+			
+			Assert.assertTrue(ridesPo.getEleConfirmCancelTxt().isDisplayed(), "Confirm cancel popup to Passenger is not displayed");
+			qrLog.info("Confirm cancel popups to Passenger is displayed");
+			
 			ridesPo.getEleYesBtn().click();
 			feedbackPo.navigateNotification();	
 			Assert.assertTrue(ridesPo.getEleNotiBackArrowIcn().isDisplayed(), "Quick Ride Wallet notification to Passenger is not displayed");
 			qrLog.info("Quick Ride Wallet notification to Passenger is displayed");
+			
 			ridesPo.getEleNotiBackArrowIcn().click();
 			qrProfilePo.logout();
+			
+			qrLog.info("Rider veryfying credited notification");
+			newUserRegPo.getEleLoginBtn().click();
+			newUserRegPo.getEleLoginPhTxtFld().sendKeys(sData[1]);
+			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
+			driver.hideKeyboard();
+			newUserRegPo.getEleLoginBtn().click();
+			
+			feedbackPo.getEleArrowIcn().click();
+			feedbackPo.navigateNotification();	
+			Assert.assertTrue(feedbackPo.getEleNotificationTxt().isDisplayed(), "Passenger Unjoined notification to Rider is not displayed");
+			qrLog.info("Passenger Unjoined notification to Rider is displayed");
+			
+			
 	} catch (Exception e) {
 			qrLog.error("Exception in  case testPassengerJoinsCancels");
 			e.printStackTrace();
@@ -315,6 +344,8 @@ public class NotificationsTest extends QRBaseLib
 			driver.hideKeyboard();
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.acceptRide();
+			
+			
 			qrProfilePo.logout();
 			
 			qrLog.info("Passenger logins to cancel the ride");
@@ -328,8 +359,8 @@ public class NotificationsTest extends QRBaseLib
 			ridesPo.getEleYesBtn().click();
 			feedbackPo.navigateNotification();	
 			
-			Assert.assertTrue(ridesPo.getEleNotiBackArrowIcn().isDisplayed(), "Quick Ride Wallet notification to Passenger is not displayed");
-			qrLog.info("Quick Ride Wallet notification to Passenger is displayed");
+			Assert.assertTrue(ridesPo.getEleNotiBackArrowIcn().isDisplayed(), "Compensation notification to Passenger is displayed");
+			qrLog.info("No compensation notification to Passenger is displayed");
 			
 			ridesPo.getEleNotiBackArrowIcn().click();
 			qrProfilePo.logout();
@@ -371,7 +402,7 @@ public class NotificationsTest extends QRBaseLib
 		feedbackPo=new FeedbackPO(driver);
 		ridesPo = new RidesPO(driver);
 		try
-		{
+		{	
 			newUserRegPo.signUPorLogin(sData[1], sData[2],sData[3]);
 			qrLog.info("Rider creating the ride");
 			feedbackPo.createRide(sData[4], sData[5],ridesPo);
@@ -388,19 +419,25 @@ public class NotificationsTest extends QRBaseLib
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			driver.hideKeyboard();
 			newUserRegPo.getEleLoginBtn().click();
+			
 			feedbackPo.getEleArrowIcn().click();
 			feedbackPo.navigateNotification();	
 			feedbackPo.getEleAcceptLnk().click();
 			feedbackPo.getEleArrowIcn().click();
+			
 			feedbackPo.getEleStartBtn().click();
 			feedbackPo.getEleYesBtn().click();
 			Assert.assertTrue(ridesPo.getEleStopBtn().isDisplayed(), "Ride is not started");
 			qrLog.info("Ride started page is displayed");
+			
 			ridesPo.getEleStopBtn().click();
+			
+			
 			ridesPo.getEleYesBtn().click();
 			feedbackPo.navigateNotification();	
 			Assert.assertTrue(ridesPo.getEleNotiBackArrowIcn().isDisplayed(), "Quick Ride Wallet notification to Rider is not displayed");
 			qrLog.info("Quick Ride Wallet notification to Rider is displayed");
+		
 			ridesPo.getEleNotiBackArrowIcn().click();
 			qrProfilePo.logout();
 			} catch (Exception e) {
@@ -443,10 +480,19 @@ public class NotificationsTest extends QRBaseLib
 			newUserRegPo.getEleLoginPwdTxtFld().sendKeys(sData[2]);
 			driver.hideKeyboard();
 			newUserRegPo.getEleLoginBtn().click();
+			feedbackPo.getEleArrowIcn().click();
+			feedbackPo.navigateNotification();	
+			TouchAction act = new TouchAction(driver);
+			act.longPress(450,194).release().perform();
+			act.longPress(450,194).release().perform();
+			act.longPress(450,194).release().perform();
+			Assert.assertTrue(feedbackPo.getEleStartExploringTxt().isDisplayed(), "Passenger request to join ride notification is not swiped off");
+			qrLog.info("Passenger request to join ride notification is swiped off by Rider");
+			ridesPo.getEleNotiBackArrowIcn().click();
 			
-			feedbackPo.acceptRide();
+			
 			qrProfilePo.logout();
-			
+			/*
 			qrLog.info("Passenger logins to recieve Ride cancelled notification");
 			newUserRegPo.getEleLoginBtn().click();
 			newUserRegPo.getEleLoginPhTxtFld().sendKeys(sData[6]);
@@ -462,11 +508,11 @@ public class NotificationsTest extends QRBaseLib
 			ridesPo.getEleNotiBackArrowIcn().click();
 			feedbackPo.getEleNotificationIcon().click();
 			TouchAction act = new TouchAction(driver);
-			act.longPress(625, 202).release().perform();
+			act.longPress(450,194).release().perform();
 			Assert.assertTrue(feedbackPo.getEleStartExploringTxt().isDisplayed(), "Passenger request to join ride notification is not swiped off");
 			qrLog.info("Passenger request to join ride notification is swiped off by Rider");
 			ridesPo.getEleNotiBackArrowIcn().click();
-			qrProfilePo.logout();
+			qrProfilePo.logout();*/
 		} catch (Exception e) {
 			qrLog.error("Exception in  case testNotiDeletedLongPress");
 			e.printStackTrace();
@@ -511,7 +557,9 @@ public class NotificationsTest extends QRBaseLib
 			
 			Assert.assertTrue(feedbackPo.getEleAcceptLnk().isDisplayed(), "Passenger request to join ride notification is not displayed");
 			qrLog.info("Passenger request to join ride notification is displayed for Rider");
-			driver.swipe(625, 202, 73, 194, 3000);
+			
+			
+			driver.swipe(450, 194, 66, 194, 3000);
 			Assert.assertTrue(feedbackPo.getEleStartExploringTxt().isDisplayed(), "Passenger request to join ride notification is not swiped off");
 			qrLog.info("Passenger request to join ride notification is swiped off by Rider");
 			ridesPo.getEleNotiBackArrowIcn().click();
@@ -561,9 +609,10 @@ public class NotificationsTest extends QRBaseLib
 			qrLog.info("Passenger request to join ride notification is displayed for Rider");
 			qrLog.info("Reject link is displayed for Rider to reject");
 			feedbackPo.getEleRejectLnk().click();
-			feedbackPo.getEleNotificationIcon().click();
-			Assert.assertTrue(ridesPo.getEleNotiBackArrowIcn().isDisplayed(), "Passenger request to join ride notification is still displayed");
+			Assert.assertTrue(feedbackPo.getEleNotificationIcn().isDisplayed(), "Passenger request to join ride notification is still displayed");
 			qrLog.info("Passenger request to join ride notification is deleted from Notifications");
+			
+			feedbackPo.getEleNotificationIcn().click();
 			ridesPo.getEleNotiBackArrowIcn().click();
 			ridesPo.getEleCancelinNotilnk().click();
 			feedbackPo.getEleCancelbtn().click();
@@ -616,10 +665,9 @@ public class NotificationsTest extends QRBaseLib
 			qrLog.info("Passenger request to join ride notification is displayed for Rider");
 			qrLog.info("Rider has got option to reject the request");
 			feedbackPo.getEleProfileArrowIcn().click();
-			Assert.assertTrue(feedbackPo.getEleNotificationIcon().isDisplayed(), "Profile page is not displayed");
+			Assert.assertTrue(feedbackPo.getEleNotificationIcn().isDisplayed(), "Profile page is not displayed");
 			qrLog.info("Profile page is displayed");
-			feedbackPo.getEleNotificationIcon().click();
-			feedbackPo.getEleArrowForwadIcn().click();
+			ridesPo.getEleBackArrowIcn().click();
 			qrProfilePo.logout();
 	
 		} catch (Exception e) {
@@ -631,7 +679,7 @@ public class NotificationsTest extends QRBaseLib
 		
 	}
 	/*
-	 * @description: Verify if the Rider can navigate to passengers profile
+	 * @description: Verify if the Notification count
 	 * @author: LAKSHMI BS
 	 * 
 	 */	
@@ -665,10 +713,11 @@ public class NotificationsTest extends QRBaseLib
 			driver.hideKeyboard();
 			newUserRegPo.getEleLoginBtn().click();
 			feedbackPo.getEleArrowIcn().click();
-			Assert.assertTrue(feedbackPo.getEleStartBtn().isDisplayed(), "Notification count is not displayed");
+			Assert.assertTrue(feedbackPo.getEleNotificationCntTxt().isDisplayed(), "Notification count is not displayed");
+			qrLog.info(feedbackPo.getEleNotificationCntTxt().getText()+" is the notification count");
 			qrLog.info("Notification count is displayed");
 			feedbackPo.navigateNotification();
-			Assert.assertTrue(ridesPo.getEleStartRideNotiTxt().isDisplayed(), "Start ride notification is not displayed");
+			Assert.assertTrue(ridesPo.getEleAcceptLnk().isDisplayed(), "Start ride notification is not displayed");
 			qrLog.info("Start Ride notification is displayed for Rider");
 			ridesPo.getEleNotiBackArrowIcn().click();
 			qrProfilePo.logout();
